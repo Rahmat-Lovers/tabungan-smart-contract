@@ -62,7 +62,7 @@ contract Lock {
         isAcceptedByAcceptor[msg.sender] = true;
     }
 
-    function storeIERC20(uint amount) public payable {
+    function deposit(uint amount) public payable {
         require(amount > 0, "Harus lebih besar dari 0");
         require(amount <= token.balanceOf(msg.sender), "Dana tidak cukup");
         require(amount <= token.allowance(msg.sender, address(this)), "Tidak diizinkan");
@@ -70,7 +70,7 @@ contract Lock {
         balances[msg.sender] += amount;
     }
 
-    function withdrawIERC20(uint256 amount) public payable {
+    function withdraw(uint256 amount) public payable {
         require(
             acceptorAddress[msg.sender] != address(0),
             "Harus menyetel acceptor terlebih dahulu"
