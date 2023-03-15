@@ -3,8 +3,10 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "npx hardhat run scripts/deploy.js --network fuji"
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.js --network fuji",
+    "deploy-local": "hardhat run scripts/deploy.js --network localhost",
+    "node": "hardhat node"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.2",

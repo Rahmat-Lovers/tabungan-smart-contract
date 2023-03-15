@@ -8,7 +8,7 @@ async function main() {
 
   await lock.deployed();
 
-  console.log("Smart Contract Addres : " + lock.address)
+  console.log("Smart Contract Address: " + lock.address)
 }
 
 main().catch((error) => {
