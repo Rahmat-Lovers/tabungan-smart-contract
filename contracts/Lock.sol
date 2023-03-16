@@ -166,13 +166,11 @@ contract Lock {
     }
 
     function withdraw(uint256 amount) public payable {
-        require(
-            acceptorAddress[msg.sender] != address(0),
-            "Harus menyetel acceptor terlebih dahulu"
-        );
-        require(isAcceptedByAcceptor[msg.sender], "Harus disetujui acceptor");
-        require(amount <= getBalance(), "Dana tidak cukup");
-        isAcceptedByAcceptor[msg.sender] = false;
+        require(canWithdraw(), "Belum bisa melakukan penarikan");
+        require(amount <= getBalance(), "Balance tidak cukup");
+        isSettedAcceptorAddress[msg.sender] = false;
+        unlockAtBalance[msg.sender] = 0;
+        unlockAtTime[msg.sender] = 0;
 
         token.transfer(msg.sender, amount);
     }
